@@ -1,0 +1,50 @@
+sources:
+  - name: demo_src
+    description: data from db flights
+    tables:
+      - name: aircrafts
+        description: flights models
+        columns:
+          - name: aircraft_code
+            description: flight aircraft code
+            tests:
+              - not_null
+              - unique
+          - name: model
+            description: "*flight model*"
+          - name: range
+            description: "_some data_"
+      - name: airports
+        description: airports details
+        columns:
+          - name: airport_code
+            description: airport code info
+          - name: airport_name
+            description: airport name
+          - name: city
+            description: airport city
+          - name: coordinates
+            description: airport coordinates
+          - name: timezone
+            description: airport timezone
+      - name: seats
+        description: seats in the flight
+        columns:
+          - name: aircraft_code
+            description: aircraft code
+          - name: seat_no
+            description: number of seats
+          - name: fare_conditions
+            description: seat type
+      - name: bookings
+        description: data about bookings
+        columns:
+          - name: book_ref
+          - name: book_date
+          - name: book_amount
+        freshness: # make this a little more strict
+          warn_after: {count: 10000, period: day}
+          error_after: {count: 60000, period: day}
+          filter: current_timestamp::date - book_date::date < 30000
+        loaded_at_field: book_date::timestamp
+        
