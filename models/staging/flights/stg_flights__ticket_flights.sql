@@ -1,6 +1,6 @@
 {{
   config(
-    materialized = 'table',
+    materialized = 'ephemeral',
     )
 }}
 
@@ -10,4 +10,3 @@ select
   fare_conditions,
   amount
 from {{ source('demo_src', 'ticket_flights') }}
-    
