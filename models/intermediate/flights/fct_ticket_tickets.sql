@@ -11,3 +11,4 @@ select
     passenger_name,
     contact_data
 from {{ ref('stg_flights__tickets') }}
+where passenger_id not in (select cast(passenger_id as varchar) from {{ ref('staff') }})

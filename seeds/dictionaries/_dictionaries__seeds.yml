@@ -1,0 +1,25 @@
+version: 2
+
+seeds:
+  - name: city_region
+    description: data about city and region
+    config:
+      column_types:
+        city: varchar(100)
+        region: varchar(100)
+    columns:
+      - name: city
+        tests:
+          - not_null
+          - unique
+
+  - name: staff
+    description: id passengers who work as staff
+    config:
+      column_types:
+        passenger_id: integer
+    columns:
+      - name: passenger_id
+        tests:
+          - not_null
+          - unique
