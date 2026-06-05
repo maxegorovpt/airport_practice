@@ -2,7 +2,8 @@
       config(
         materialized = 'incremental',
         incremental_strategy = 'merge',
-        unique_key = 'flight_id'
+        unique_key = 'flight_id',
+        tag = 'staging'
     )
 }}
 select 

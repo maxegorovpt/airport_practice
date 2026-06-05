@@ -1,33 +1,31 @@
+version: 2
+
 models:
   - name: fct_bookings
     description: facts about bookings
-    docs:
-      show: true
-      node_color: "green"
     latest_version: 1
     versions:
       - v: 1
     config:
-      contract: {enforced: true}
-    meta:
-      owner: "egorovmaxkrd@gmail.com"
-      contact_tg: "maxegorovpt"
-      status: in_progress   
-
+      contract:
+        enforced: true
+      meta:
+        owner: "egorovmaxkrd@gmail.com"
+        contact_tg: "maxegorovpt"
+        status: in_progress
     columns:
       - name: book_ref
         data_type: varchar(8)
         constraints:
           - type: not_null
           - type: unique
-      
+        tests: [not_null, unique]
       - name: book_date
         data_type: timestamptz
         constraints:
           - type: not_null
           - type: check
             expression: "book_date <= CURRENT_TIMESTAMP"
-      
       - name: total_amount
         data_type: numeric(10, 2)
         constraints:

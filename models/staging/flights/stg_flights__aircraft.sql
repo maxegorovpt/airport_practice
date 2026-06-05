@@ -1,6 +1,7 @@
 {{
       config(
-        materialized = 'table'
+        materialized = 'table',
+        tag = 'staging'
     )
 }}
 select 

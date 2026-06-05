@@ -1,6 +1,10 @@
 {{
   config(
     materialized = 'table',
+    meta = {
+      'owner':'egorovmaxkrd@gmail.com',
+      'created_year': 2026},
+      tag = 'intermediate'
     )
 }}
 
