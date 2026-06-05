@@ -36,3 +36,8 @@ models:
         meta:
           owner: "egorovmaxkrd@gmail.com"
           year_created: 2026
+        +tags:
+          - "intermediate"
+    staging:
+      +tags:
+        - "staging"
