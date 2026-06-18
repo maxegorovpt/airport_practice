@@ -6,8 +6,6 @@
 }}
 
 select
-  book_ref,
-  book_date,
-  total_amount
+  {{- show_columns_relation('stg_flights__bookings') -}}
 from {{ source('demo_src', 'bookings') }}
     
