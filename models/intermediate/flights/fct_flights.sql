@@ -1,9 +1,16 @@
 {{
   config(
     materialized = 'table',
-    tag = 'intermediate'
-    )
+    tags = ['intermediate']
+  )
 }}
+
+{% set status_values = dbt_utils.get_column_values(
+    table = ref('stg_flights__flights'),
+    column = 'status'
+) %}
+
+{{ log("Unique flight statuses: " ~ status_values, info=True) }}
 
 select 
     flight_id,

@@ -35,3 +35,8 @@ models:
             expression: "total_amount <= 99999999.99"
         tests:
           - not_null
+  - name: fct_flights                    
+    description: "fact of flights"       
+    tests:                          
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('stg_flights__flights')
