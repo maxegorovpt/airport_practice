@@ -18,6 +18,7 @@ select
     scheduled_departure,
     scheduled_arrival,
     departure_airport,
+    departure_airport as departure_airport_id,
     arrival_airport,
     status,
     aircraft_code,
