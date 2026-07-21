@@ -23,5 +23,12 @@ select
     status,
     aircraft_code,
     actual_departure,
-    actual_arrival
+    actual_arrival,
+    case 
+      when actual_departure is not null and actual_arrival is not null
+        then actual_arrival - actual_departure
+      when actual_departure is null and actual_arrival is null  
+        then interval '0 seconds'
+      else null
+    end as actual_duration_flight
 from {{ ref('stg_flights__flights') }}
